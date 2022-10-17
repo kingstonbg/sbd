@@ -1,0 +1,16 @@
+@import '../../styles/colors';
+
+$navHeight: 50px;
+
+.nav {
+	position: sticky;
+	top: 0;
+	left: 0;
+	display: flex;
+	height: $navHeight;
+	background-color: $rich-black-fogra-29;
+	align-items: center;
+	padding: 0 25px;
+	box-shadow: 0 2px 12px -2px rgba(47, 99, 141, 0.7);
+	z-index: 1;
+}

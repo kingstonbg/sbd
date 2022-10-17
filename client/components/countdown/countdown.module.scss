@@ -1,0 +1,20 @@
+.countdown {
+	padding: 25px 0;
+}
+
+.counterWrapper {
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
+}
+.counter:not(:last-child) {
+	margin-right: 20px;
+}
+
+.timeWrapper {
+	display: flex;
+	flex-direction: column;
+	.time {
+		text-align: center;
+	}
+}

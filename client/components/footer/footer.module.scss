@@ -1,0 +1,10 @@
+@import '../../styles/colors';
+
+.footer {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba($oxford-blue, 0.3);
+}

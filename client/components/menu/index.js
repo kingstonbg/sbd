@@ -1,10 +1,24 @@
 import styles from './menu.module.scss';
-import { FaHome, FaUser } from 'react-icons/fa';
+import { FaHome, FaUser, FaSignOutAlt } from 'react-icons/fa';
 import { GiDungeonGate, GiBattleGear } from 'react-icons/gi';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Menu() {
+	const [isLogged, setIsLogged] = useState(false);
 	const [showMenu, setShowMenu] = useState(false);
+	const router = useRouter();
+
+	useEffect(() => {
+		const token = sessionStorage.getItem('token');
+		setIsLogged(!!token);
+	});
+
+	async function logout() {
+		setShowMenu(false);
+		sessionStorage.clear();
+		router.asPath == '/' ? router.reload() : await router.push('/');
+	}
 
 	function onClick() {
 		console.log('clicked');
@@ -90,6 +104,24 @@ export default function Menu() {
 								<div className={styles.face2}></div>
 							</div>
 						</div>
+						{isLogged ? (
+							<div className={styles.hexRow} onClick={logout}>
+								<div className={styles.hexagon}>
+									<FaSignOutAlt
+										className={styles.menuIcon}
+										style={{
+											margin: 'auto',
+											fontSize: '100px',
+										}}
+									/>
+									<p className={styles.menuText}>Logout</p>
+									<div className={styles.face1}></div>
+									<div className={styles.face2}></div>
+								</div>
+							</div>
+						) : (
+							<></>
+						)}
 					</div>
 				</div>
 			</div>

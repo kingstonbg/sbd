@@ -1,9 +1,17 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const cors = require('cors');
 require('dotenv').config({ path: './config.env' });
 const port = process.env.PORT || 5000;
 app.use(cors());
+app.use(
+	session({
+		secret: process.env.EXPRESS_SECRET,
+		resave: true,
+		saveUninitialized: true,
+	}),
+);
 app.use(express.json());
 app.use(require('./routes/record'));
 app.use(require('./routes/user'));
